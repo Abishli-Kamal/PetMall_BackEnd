@@ -1,0 +1,23 @@
+﻿@model Slider;
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div style="margin-top:10%;">
+    <div>
+        <h4>
+            Title:  @Model.Title
+                  
+        </h4>
+
+    </div>
+    <div>
+        <div class="d-flex">
+            <h1 class="mb-2">Image:</h1>
+            <img style="width:400px;" src="~/assets/img/@Model.Image" />
+        </div>
+    </div>
+
+</div>
+

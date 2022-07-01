@@ -1,0 +1,27 @@
+﻿@model Slider;
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div style="margin-top:10%;">
+    <div>
+        <h4>
+            Title:  @Model.Title
+                  
+        </h4>
+
+    </div>
+    <div>
+        <div>
+            <label class="mb-2">Image:</label>
+            <img style="width:400px;" src="~/assets/img/@Model.Image" />
+        </div>
+    </div>
+
+</div>
+
+<form style="margin-top:30%;" method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+

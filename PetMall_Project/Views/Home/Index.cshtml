@@ -1,0 +1,219 @@
+﻿@using PetMall_Project.Models
+@using PetMall_Project.View_Models
+@model HomeVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+    <section id="slider">
+        <div class="prevBtn">
+            <i style="font-size:30px;" class="fa-solid fa-circle-chevron-left"></i>
+        </div>
+        <div class="slider">
+
+           @foreach (Slider slider in Model.Sliders)
+          {
+              
+            <div class="image">
+                <img src="~/assets/img/@slider.Image" alt="">
+                <div class="img-txt">
+                   <h2> @slider.Title</h2>
+                </div>
+            </div>
+          } 
+           
+        </div>
+        <div class="nextBtn">
+            <i style="font-size:30px;" class="fa-solid fa-circle-chevron-right"></i>
+        </div>
+    </section>
+
+    <section id="category">
+        <div class="container">
+            <div class="row text-center">
+                <div class="foot">
+                    <i class="fa-solid fa-paw"></i>
+                </div>
+                <div class="categoryname">
+                    <h3>Shop by Category</h3>
+                </div>
+                @foreach (ProductCardOne pcard in Model.ProductCardOnes)
+               {
+                    <div class="col-lg-2 card ">
+                    <img src="~/assets/img/@pcard.Image" alt="">
+                    <h4>@pcard.Title</h4>
+                    <span>@pcard.Count</span>
+                </div>
+               }
+               
+            </div>
+        </div>
+
+    </section>
+    <section id="products">
+        <div class="container">
+            <div class="row text-center">
+                <div class="title">
+                    <h2>Best Sellers</h2>
+                </div>
+                <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active  bg-light text-dark" id="pills-home-tab"
+                                data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab"
+                                aria-controls="p    ills-home" aria-selected="true">
+                            Dogs
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link  bg-light text-dark" id="pills-profile-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                                aria-selected="false">
+                            Cats
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link  bg-light text-dark" id="pills-contact-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                                aria-selected="false">
+                            T-Shirt
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link  bg-light text-dark" id="pills-contact-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                                aria-selected="false">
+                            Jewelry
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link bg-light text-dark" id="pills-contact-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                                aria-selected="false">
+                            Accessories
+                        </button>
+                    </li>
+
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active " id="pills-home" role="tabpanel"
+                         aria-labelledby="pills-home-tab">
+                        <div class="row">
+                            @foreach (Product item in Model.Products.FindAll(s=>s.CategoryId==1))
+                           {
+                              <div class="item col-lg-3">
+                                <div class="images">
+                                    <img width="300px;" src="~/assets/img/@item.MainImage" alt="">
+                                    <img class="image-hover" width="300px;" src="~/assets/img/@item.AnotherImage" alt="">
+                                </div>
+                                <span>@item.Title</span>
+                                <span>@item.Price</span>
+
+                                <div class="icons">
+                                    <ul>
+                                        <li><a href=""></a><i class="fa-regular fa-eye"></i></li>
+                                        <li><a href=""></a><i class="fa-solid fa-bag-shopping"></i></li>
+                                        <li><a href=""></a><i class="fa-regular fa-heart"></i></li>
+                                    </ul>
+                                </div>
+                            </div> 
+                           }
+                            
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                         aria-labelledby="pills-profile-tab">
+                        <div class="row">
+                            @foreach (Product item in Model.Products.FindAll(s=>s.CategoryId==2))
+                           {
+                              <div class="item col-lg-3">
+                                <div class="images">
+                                    <img width="300px;" src="~/assets/img/@item.MainImage" alt="">
+                                    <img class="image-hover" width="300px;" src="~/assets/img/@item.AnotherImage" alt="">
+                                </div>
+                                <span>@item.Title</span>
+                                <span>@item.Price</span>
+
+                                <div class="icons">
+                                    <ul>
+                                        <li><a href=""></a><i class="fa-regular fa-eye"></i></li>
+                                        <li><a href=""></a><i class="fa-solid fa-bag-shopping"></i></li>
+                                        <li><a href=""></a><i class="fa-regular fa-heart"></i></li>
+                                    </ul>
+                                </div>
+                            </div> 
+                           }
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel"
+                         aria-labelledby="pills-contact-tab">
+                        <div class="row">
+                             @foreach (Product item in Model.Products.FindAll(s=>s.CategoryId==3))
+                           {
+                              <div class="item col-lg-3">
+                                <div class="images">
+                                    <img width="300px;" src="~/assets/img/@item.MainImage" alt="">
+                                    <img class="image-hover" width="300px;" src="~/assets/img/@item.AnotherImage" alt="">
+                                </div>
+                                <span>@item.Title</span>
+                                <span>@item.Price</span>
+
+                                <div class="icons">
+                                    <ul>
+                                        <li><a href=""></a><i class="fa-regular fa-eye"></i></li>
+                                        <li><a href=""></a><i class="fa-solid fa-bag-shopping"></i></li>
+                                        <li><a href=""></a><i class="fa-regular fa-heart"></i></li>
+                                    </ul>
+                                </div>
+                            </div> 
+                           }
+                          
+                        </div>
+                    </div>
+                    <div class="tab-pane fade col-lg-3" id="pills-contact" role="tabpanel"
+                         aria-labelledby="pills-contact-tab">
+                        <div class="row">
+                            @foreach (Product item in Model.Products.FindAll(s=>s.CategoryId==4))
+                           {
+                              <div class="item col-lg-3">
+                                <div class="images">
+                                    <img width="300px;" src="~/assets/img/@item.MainImage" alt="">
+                                    <img class="image-hover" width="300px;" src="~/assets/img/@item.AnotherImage" alt="">
+                                </div>
+                                <span>@item.Title</span>
+                                <span>@item.Price</span>
+
+                                <div class="icons">
+                                    <ul>
+                                        <li><a href=""></a><i class="fa-regular fa-eye"></i></li>
+                                        <li><a href=""></a><i class="fa-solid fa-bag-shopping"></i></li>
+                                        <li><a href=""></a><i class="fa-regular fa-heart"></i></li>
+                                    </ul>
+                                </div>
+                            </div> 
+                           }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section id="contact">
+        <div class="container">
+            <div class="row ">
+                @foreach (Contact item in Model.Contacts)
+               {
+                <div class="col-lg-3 item">
+                    <i class="@item.Icon"></i>
+                    <h5>@item.Title</h5>
+                    <p> @item.SubTitle</p>
+                </div>   
+               }
+                
+            </div>
+        </div>
+    </section>
+</main>
+
